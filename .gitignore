@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+.turbo/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Expo
+apps/mobile/.expo/
+apps/mobile/android/
+apps/mobile/ios/
+
+# Supabase
+supabase/.temp/
+
+# logs
+*.log
+npm-debug.log*
+
+# test
+coverage/
+
+# Claude Code
+.agents/
+.claude/
+skills-lock.json
