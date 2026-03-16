@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 :root {
     /* 오늘의집 메인 하늘색 */
-    --primary: oklch(0.72 0.12 200);
+    --primary: oklch(0.65 0.19 245);
     --primary-foreground: oklch(1 0 0);
     /* 텍스트 */
     --foreground: oklch(0.22 0 0);
@@ -81,7 +81,7 @@
 
 @theme inline {
     /* 오늘의집 커스텀 컬러 */
-    --color-ohou-primary: oklch(0.72 0.12 200);
+    --color-ohou-primary: oklch(0.65 0.19 245);
     --color-ohou-sale: oklch(0.63 0.24 25);
     --color-ohou-text: oklch(0.22 0 0);
     --color-ohou-sub-text: oklch(0.58 0.01 230);
