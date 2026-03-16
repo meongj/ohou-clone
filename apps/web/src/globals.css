@@ -18,8 +18,6 @@
     --input: oklch(0.94 0 0);
     /* 할인 가격 빨간색 → destructive 활용 */
     --destructive: oklch(0.63 0.24 25);
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
@@ -27,7 +25,6 @@
     --muted: oklch(0.97 0 0);
     --accent: oklch(0.97 0 0);
     --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
     --ring: oklch(0.708 0 0);
     --chart-1: oklch(0.809 0.105 251.813);
     --chart-2: oklch(0.623 0.214 259.815);
