@@ -2,19 +2,19 @@
 
 ## 기술 스택
 
-| 분류 | 기술 |
-|------|------|
-| 언어 | TypeScript |
-| 프론트엔드 | React, React Native, Vite |
-| 스타일링 & UI | Tailwind CSS, shadcn/ui |
-| 폼 검증 | Zod |
-| 백엔드 | Supabase (DB, Storage) |
-| 데이터 페칭 | TanStack Query |
-| 라우팅 | React Router |
-| 상태관리 | Zustand (+ localStorage persist) |
-| 모바일 | Expo (WebView) |
-| CI/CD | Vercel (웹호스팅), GitHub Actions |
-| 모노레포 | pnpm + Turborepo |
+| 분류          | 기술                              |
+| ------------- | --------------------------------- |
+| 언어          | TypeScript                        |
+| 프론트엔드    | React, React Native, Vite         |
+| 스타일링 & UI | Tailwind CSS, shadcn/ui           |
+| 폼 검증       | Zod                               |
+| 백엔드        | Supabase (DB, Storage)            |
+| 데이터 페칭   | TanStack Query                    |
+| 라우팅        | React Router                      |
+| 상태관리      | Zustand (+ localStorage persist)  |
+| 모바일        | Expo (WebView)                    |
+| CI/CD         | Vercel (웹호스팅), GitHub Actions |
+| 모노레포      | pnpm + Turborepo                  |
 
 ---
 
@@ -100,14 +100,14 @@ post_likes  → post_id 배열
 
 ## 핵심 기술 결정
 
-| 결정 | 이유 |
-|------|------|
-| Auth 제거 | MVP 범위 축소, 북마크/카트는 로컬 처리 |
-| Supabase 읽기 전용 | seed 데이터 서빙만, RLS 불필요 |
-| TanStack Query | 서버 상태 캐싱, 무한 스크롤 |
-| Zustand persist | 클라이언트 상태 + localStorage 영속화 |
-| shadcn/ui | 커스터마이징 가능, Tailwind 호환 |
-| FSD 아키텍처 | feature별 코드 분리로 확장성 확보 |
+| 결정               | 이유                                   |
+| ------------------ | -------------------------------------- |
+| Auth 제거          | MVP 범위 축소, 북마크/카트는 로컬 처리 |
+| Supabase 읽기 전용 | seed 데이터 서빙만, RLS 불필요         |
+| TanStack Query     | 서버 상태 캐싱, 무한 스크롤            |
+| Zustand persist    | 클라이언트 상태 + localStorage 영속화  |
+| shadcn/ui          | 커스터마이징 가능, Tailwind 호환       |
+| FSD 아키텍처       | feature별 코드 분리로 확장성 확보      |
 
 ---
 
@@ -115,19 +115,19 @@ post_likes  → post_id 배열
 
 ### Day 1 (월) - 프로젝트 세팅
 
-- [ ] 모노레포 초기화 (pnpm workspace + Turborepo)
-- [ ] 웹앱 세팅 (Vite + React + TypeScript + Tailwind + shadcn/ui)
-- [ ] Expo 앱 세팅 (Expo 프로젝트 + WebView 설정)
-- [ ] Supabase 세팅 (프로젝트 생성, DB 스키마 마이그레이션)
-- [ ] 공통 패키지 설정 (shared 타입, Supabase 클라이언트)
-- [ ] GitHub repo 생성, Vercel 연동
+- [x] 모노레포 초기화 (pnpm workspace + Turborepo)
+- [x] 웹앱 세팅 (Vite + React + TypeScript + Tailwind + shadcn/ui)
+- [x] Expo 앱 세팅 (Expo 프로젝트 + WebView 설정)
+- [x] Supabase 세팅 (프로젝트 생성, DB 스키마 마이그레이션)
+- [x] 공통 패키지 설정 (shared 타입, Supabase 클라이언트)
+- [x] GitHub repo 생성, Vercel 연동
 
 ### Day 2 (화) - 레이아웃 & 라우팅
 
-- [ ] 공통 레이아웃 (Header: 로고, 검색, 카트 아이콘 / Bottom Nav / Footer)
-- [ ] React Router 설정 (`/`, `/products/:id`, `/community`, `/cart`, `/bookmarks`)
+- [x] 공통 레이아웃 (Header: 로고, 검색, 카트 아이콘 / Bottom Nav / Footer)
+- [x] React Router 설정 (`/`, `/products/:id`, `/community`, `/cart`, `/bookmarks`)
 - [ ] Zustand 스토어 구성 (cart, bookmark, ui)
-- [ ] TanStack Query 프로바이더 설정
+- [x] TanStack Query 프로바이더 설정
 
 ### Day 3 (수) - 메인 페이지 & 상품 목록
 
@@ -168,10 +168,10 @@ post_likes  → post_id 배열
 
 ## 주요 페이지 & 기능 요약
 
-| 페이지 | 주요 기능 |
-|--------|----------|
-| 메인 (`/`) | 배너, 카테고리, 상품 리스트, 무한 스크롤 |
-| 상품 상세 (`/products/:id`) | 상품 정보, 장바구니 담기, 북마크 |
-| 커뮤니티 (`/community`) | 인스타 스타일 피드, 좋아요 |
-| 장바구니 (`/cart`) | 상품 목록, 수량 조절, 총 금액 |
-| 북마크 (`/bookmarks`) | 북마크한 상품 목록 |
+| 페이지                      | 주요 기능                                |
+| --------------------------- | ---------------------------------------- |
+| 메인 (`/`)                  | 배너, 카테고리, 상품 리스트, 무한 스크롤 |
+| 상품 상세 (`/products/:id`) | 상품 정보, 장바구니 담기, 북마크         |
+| 커뮤니티 (`/community`)     | 인스타 스타일 피드, 좋아요               |
+| 장바구니 (`/cart`)          | 상품 목록, 수량 조절, 총 금액            |
+| 북마크 (`/bookmarks`)       | 북마크한 상품 목록                       |
