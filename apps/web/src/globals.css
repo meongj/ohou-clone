@@ -129,9 +129,46 @@
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground text-sm;
     }
     html {
         @apply font-sans;
+        font-size: 16px;
+    }
+    h1 {
+        @apply text-2xl font-bold;
+    }
+    h2 {
+        @apply text-xl font-bold;
+    }
+    h3 {
+        @apply text-lg font-semibold;
+    }
+    h4 {
+        @apply text-base font-semibold;
+    }
+    small {
+        @apply text-xs;
+    }
+}
+
+@utility container-ohou {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    @media (min-width: 640px) {
+        max-width: 640px;
+    }
+    @media (min-width: 768px) {
+        max-width: 768px;
+    }
+    @media (min-width: 1024px) {
+        max-width: 1024px;
+    }
+    @media (min-width: 1280px) {
+        max-width: 1200px;
+    }
+    @media (min-width: 1536px) {
+        max-width: 1320px;
     }
 }
