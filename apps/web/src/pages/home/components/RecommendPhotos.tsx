@@ -1,5 +1,5 @@
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {BookmarkIcon} from "lucide-react";
+import {BookmarkIcon, ChevronRight} from "lucide-react";
 import {Link} from "react-router-dom";
 import {SectionCarousel} from "./SectionCarousel";
 
@@ -25,12 +25,6 @@ const photos = [
     nickname: "옐로우동동",
     profile: "/main-recommend/default_profile.png",
   },
-  {
-    id: 12,
-    image: "/main-recommend/image3.avif",
-    nickname: "옐로우동동",
-    profile: "/main-recommend/default_profile.png",
-  },
 ];
 
 export function RecommendPhotos() {
@@ -49,32 +43,43 @@ export function RecommendPhotos() {
 
       {/* 사진 그리드 */}
       <SectionCarousel
-        items={photos.map((photo) => (
-          <div className="group cursor-pointer relative">
-            <div className="aspect-3/4 rounded-sm overflow-hidden">
-              <img
-                src={photo.image}
-                alt={photo.nickname}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex items-center gap-1.5 mt-2 absolute bottom-2 left-2 right-2">
-              <div className="flex justify-between w-full">
-                <div className="flex gap-1  items-center">
-                  <Avatar className="w-5 h-5">
-                    <AvatarImage src={photo.profile} />
-                    <AvatarFallback>{photo.nickname[0]}</AvatarFallback>
-                  </Avatar>
-                  <span className="text-white font-bold text-xs">{photo.nickname}</span>
-                </div>
+        items={[
+          ...photos.map((photo) => (
+            <div className="group cursor-pointer relative">
+              <div className="aspect-3/4 rounded-sm overflow-hidden">
+                <img
+                  src={photo.image}
+                  alt={photo.nickname}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex items-center gap-1.5 mt-2 absolute bottom-2 left-2 right-2">
+                <div className="flex justify-between w-full">
+                  <div className="flex gap-1  items-center">
+                    <Avatar className="w-5 h-5">
+                      <AvatarImage src={photo.profile} />
+                      <AvatarFallback>{photo.nickname[0]}</AvatarFallback>
+                    </Avatar>
+                    <span className="text-white font-bold text-xs">{photo.nickname}</span>
+                  </div>
 
-                <div className="flex">
-                  <BookmarkIcon className="text-white" />
+                  <div className="flex">
+                    <BookmarkIcon className="text-white" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          )),
+          // 마지막 더보기 카드
+          <Link
+            to="/community"
+            key="more"
+            className="flex flex-col items-center justify-center aspect-3/4 rounded-sm
+   hover:bg-gray-50 transition-colors">
+            <ChevronRight className="w-8 h-8 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground mt-2">더보기</span>
+          </Link>,
+        ]}
       />
     </div>
   );
