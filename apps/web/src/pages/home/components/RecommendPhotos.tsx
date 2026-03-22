@@ -1,6 +1,7 @@
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {BookmarkIcon} from "lucide-react";
 import {Link} from "react-router-dom";
+import {SectionCarousel} from "./SectionCarousel";
 
 const photos = [
   {id: 1, image: "/main-recommend/image1.avif", nickname: "퓌치", profile: "/main-recommend/profile1.avif"},
@@ -9,6 +10,27 @@ const photos = [
   {id: 4, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
   {id: 5, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
   {id: 6, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
+  {id: 7, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
+  {id: 8, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
+  {id: 9, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
+  {
+    id: 10,
+    image: "/main-recommend/image3.avif",
+    nickname: "옐로우동동",
+    profile: "/main-recommend/default_profile.png",
+  },
+  {
+    id: 11,
+    image: "/main-recommend/image3.avif",
+    nickname: "옐로우동동",
+    profile: "/main-recommend/default_profile.png",
+  },
+  {
+    id: 12,
+    image: "/main-recommend/image3.avif",
+    nickname: "옐로우동동",
+    profile: "/main-recommend/default_profile.png",
+  },
 ];
 
 export function RecommendPhotos() {
@@ -26,8 +48,8 @@ export function RecommendPhotos() {
       </div>
 
       {/* 사진 그리드 */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 ">
-        {photos.map((photo) => (
+      <SectionCarousel
+        items={photos.map((photo) => (
           <div className="group cursor-pointer relative">
             <div className="aspect-3/4 rounded-sm overflow-hidden">
               <img
@@ -53,7 +75,7 @@ export function RecommendPhotos() {
             </div>
           </div>
         ))}
-      </div>
+      />
     </div>
   );
 }
