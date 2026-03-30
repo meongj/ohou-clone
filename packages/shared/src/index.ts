@@ -1,3 +1,3 @@
-export {supabase} from "./supabase";
+export {createSupabaseClient} from "./supabase";
 // 진입점
 export type {Product, Post, Comment} from "./types";

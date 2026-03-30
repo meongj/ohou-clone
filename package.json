@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "turbo run dev --filter=web",
     "build": "turbo run build --filter=web",
-    "lint": "turbo run lint --filter=web"
+    "lint": "turbo run lint --filter=web",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
   "devDependencies": {
+    "husky": "^9.1.7",
     "turbo": "^2.8.17"
   }
 }
