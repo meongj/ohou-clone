@@ -2,32 +2,22 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {BookmarkIcon, ChevronRight} from "lucide-react";
 import {Link} from "react-router-dom";
 import {SectionCarousel} from "./SectionCarousel";
-
-const photos = [
-  {id: 1, image: "/main-recommend/image1.avif", nickname: "퓌치", profile: "/main-recommend/profile1.avif"},
-  {id: 2, image: "/main-recommend/image2.webp", nickname: "282house_", profile: "/main-recommend/default_profile.png"},
-  {id: 3, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 4, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 5, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 6, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 7, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 8, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {id: 9, image: "/main-recommend/image3.avif", nickname: "옐로우동동", profile: "/main-recommend/default_profile.png"},
-  {
-    id: 10,
-    image: "/main-recommend/image3.avif",
-    nickname: "옐로우동동",
-    profile: "/main-recommend/default_profile.png",
-  },
-  {
-    id: 11,
-    image: "/main-recommend/image3.avif",
-    nickname: "옐로우동동",
-    profile: "/main-recommend/default_profile.png",
-  },
-];
+import type {Post} from "@ohou/shared";
+import {fetchPosts} from "@/features/post/api";
+import {useQuery} from "@tanstack/react-query";
+import { usePostBookmarks } from "@/features/bookmark/usePostBookmarks";
 
 export function RecommendPhotos() {
+
+  // 커뮤니티 포스트 + 북마크 데이터 로딩
+  const {data: posts} = useQuery<Post[]>({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+  });
+
+  const {bookmarkedIds, toggleBookmark}=usePostBookmarks();
+
+ 
   return (
     <div className="container-ohou py-6">
       {/* 헤더 */}
@@ -44,12 +34,12 @@ export function RecommendPhotos() {
       {/* 사진 그리드 */}
       <SectionCarousel
         items={[
-          ...photos.map((photo) => (
-            <div className="group cursor-pointer relative">
+          ...(posts ?? []).map((post) => (
+            <div key={post.id} className="group cursor-pointer relative">
               <div className="aspect-3/4 rounded-sm overflow-hidden">
                 <img
-                  src={photo.image}
-                  alt={photo.nickname}
+                  src={post.image_url}
+                  alt={post.nickname}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -57,14 +47,18 @@ export function RecommendPhotos() {
                 <div className="flex justify-between w-full">
                   <div className="flex gap-1  items-center">
                     <Avatar className="w-5 h-5">
-                      <AvatarImage src={photo.profile} />
-                      <AvatarFallback>{photo.nickname[0]}</AvatarFallback>
+                      <AvatarImage src={post.avatar_url ?? undefined} />
+                      <AvatarFallback>{post.nickname[0]}</AvatarFallback>
                     </Avatar>
-                    <span className="text-white font-bold text-xs">{photo.nickname}</span>
+                    <span className="text-white font-bold text-xs">{post.nickname}</span>
                   </div>
 
                   <div className="flex">
-                    <BookmarkIcon className="text-white" />
+                    <button type="button" onClick={() => toggleBookmark(post.id)} className="cursor-pointer">
+                      <BookmarkIcon
+                        className={bookmarkedIds.has(post.id) ? "text-primary fill-primary" : "text-white"}
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
