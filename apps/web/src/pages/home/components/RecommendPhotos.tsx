@@ -5,19 +5,17 @@ import {SectionCarousel} from "./SectionCarousel";
 import type {Post} from "@ohou/shared";
 import {fetchPosts} from "@/features/post/api";
 import {useQuery} from "@tanstack/react-query";
-import { usePostBookmarks } from "@/features/bookmark/usePostBookmarks";
+import {usePostBookmarks} from "@/features/bookmark/usePostBookmarks";
 
 export function RecommendPhotos() {
-
   // 커뮤니티 포스트 + 북마크 데이터 로딩
   const {data: posts} = useQuery<Post[]>({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
 
-  const {bookmarkedIds, toggleBookmark}=usePostBookmarks();
+  const {bookmarkedIds, toggleBookmark} = usePostBookmarks();
 
- 
   return (
     <div className="container-ohou py-6">
       {/* 헤더 */}
