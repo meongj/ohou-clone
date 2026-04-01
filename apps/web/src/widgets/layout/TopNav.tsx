@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
-import {ShoppingCart, Search, Badge} from "lucide-react";
+import {ShoppingCart, Search} from "lucide-react";
 import {Input} from "@/components/ui/input";
+import {useCartStore} from "@/features/cart/store";
 
 export default function TopNav() {
-  const cartCount = 0;
+  const cartCount = useCartStore((state) => state.items.length);
 
   return (
     <div className="flex justify-between items-center h-14 ">
@@ -39,9 +40,9 @@ export default function TopNav() {
         {/* 장바구니 */}
         <Link to="/cart" className="relative">
           <ShoppingCart className="w-6 h-6" />
-          <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-ohou-primary">
+          <div className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 text-xs bg-destructive text-white rounded-4xl font-bold">
             {cartCount}
-          </Badge>
+          </div>
         </Link>
       </div>
     </div>
