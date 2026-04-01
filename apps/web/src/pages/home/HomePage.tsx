@@ -1,3 +1,4 @@
+import {BestProducts} from "./components/BestProducts";
 import HeroBanner from "./components/HeroBanner";
 import {QuickMenu} from "./components/QuickMenu";
 import {RecommendPhotos} from "./components/RecommendPhotos";
@@ -8,6 +9,7 @@ export default function HomePage() {
       <HeroBanner />
       <QuickMenu />
       <RecommendPhotos />
+      <BestProducts />
     </div>
   );
 }
